@@ -1,0 +1,345 @@
+@font-face {
+  font-family: 'Oleo Script';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Oleo Script'), local('OleoScript-Regular'), url(http://fonts.gstatic.com/s/oleoscript/v5/_weQNDK6Uf40CiGFKBBUjiwlidHJgAgmTjOEEzwu1L8.ttf) format('truetype');
+}
+
+.divider {
+    clear: both;
+    height: 50px;
+}
+
+.line-separator {
+	height:1px;
+	width: 75%;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	background:#717171;
+	border-bottom:1px solid #313030;
+}
+
+body { padding-top: 70px; }
+
+hh1 {
+    font-family: 'Oleo Script';
+    color: #2b2b2b;
+    text-shadow: 4px 4px 0px rgba(0,0,0,0.1);
+    font-size: 100%;
+} 
+
+/*
+@media (max-width: 1024px) {
+   hh1 {
+        font-family: 'Oleo Script';
+        color: #2b2b2b;
+        text-shadow: 4px 4px 0px rgba(0,0,0,0.1);
+        font-size: 100%;
+    } 
+}
+@media (max-width: 720px) {
+   hh1 {
+        font-family: 'Oleo Script';
+        color: #2b2b2b;
+        text-shadow: 4px 4px 0px rgba(0,0,0,0.1);
+        font-size: 50%;
+    } 
+}
+*/
+hh2 {
+    font: 400 50px/1.3 'Oleo Script', Helvetica, sans-serif;
+    color: #2b2b2b;
+    text-shadow: 4px 4px 0px rgba(0,0,0,0.1);
+}
+h3 {font-size: 1.429em}	/* 20px */
+h4 {font-size: 1.286em}	/* 18px */
+h5 {font-size: 1.143em}	/* 16px */
+h6 {font-size: 1em}		/* 14px */
+
+h2, h3, h4, h5, h6 {
+	font-weight: 400;
+	line-height: 1.1;
+	margin-bottom: .8em;
+}
+
+a:link, a:visited {
+	padding: 0 1px;
+	text-decoration: none;
+}
+
+a:hover, a:active {
+	color: #fff;
+	text-decoration: none;
+}
+
+.mainHeader nav {
+	font-size: : 1.143em;
+	font-family: Helvetica;
+	font-weight: lighter;
+	height: 40px;
+	line-height: 30px;
+	margin: 0 auto 30px auto;
+	text-align: center;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+
+.mainHeader nav ul {
+	list-style: none;
+	margin: 0, auto;
+}
+
+.mainHeader nav ul li {
+	float: center;
+	display: inline;
+}
+
+.mainHeader nav a:link, .mainHeader nav a:visited {
+	color: #808080;
+	display: inline-block;
+	height: 30px;
+	padding: 5px 23px;
+	text-decoration: none;
+}
+
+.mainHeader nav a:hover, .mainHeader nav a:active,
+.mainHeader nav .active a:link, .mainHeader nav .active a:visited {
+	color: #C0C0C0;
+	text-shadow: none !important;
+}
+	
+.mainHeader nav li a {
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+
+.mainContent {
+	overflow: hidden;
+	line-height: 25px;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+
+.home {
+    position: relative;
+    left: 0;
+    top: 0;
+    width: 100%;
+}
+
+.home img {
+	width: 100%;
+	height: auto;
+}
+
+.home hh2 {
+    position: absolute;
+    font-size: 4vw;
+    top: 10%;
+    left: 5%;
+    width: 100%;
+}
+
+.home hh1 {
+    position: absolute;
+    font-size: 8vw;
+    left: 10%;
+    top: 25%;
+    width: 100%
+}
+
+.home div {
+    position: absolute;
+    top: 18%;
+    left: 5%;
+    width: 35%;
+    height: 1px;
+    color: black;
+}
+
+.content header {
+	text-align: center;
+    top: 25px;
+    left: 175px;
+    width: 100%
+}
+
+.about {
+	width: 50%;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+.about img {
+	padding-top: 10px;
+    padding-bottom: 25px;
+	width: 75%;
+	height: auto;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.work {
+	width: 80%;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.work h3 {
+	color: #4C6680;
+    margin-bottom: 0;
+    padding: 0;
+}
+
+.workImage {
+    display: inline-block;
+    vertical-align: middle;
+    clear: both;
+    width: 25%;
+    float: left;
+}
+
+.workImage1 {
+    padding-top: 20px;
+}
+
+.workImage img {
+    display: inline-block;
+    width: 100%;
+    height: auto;
+}
+
+.workContent {
+    width: 65%;
+    float: right;
+}
+
+@media only screen and (max-width: 600px) {
+    .workContent{
+        width: 100%;
+    }
+
+    .viasat {
+        padding-top: 10px;
+    }
+
+    .workImage {
+        width: 100%;
+        float: none;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+.workContent footer {
+    font-style: italic;
+}
+/*
+.viasat {
+    clear: both;
+}
+
+.viasat img {
+    width: 25%;
+    height: auto;
+    float: left;
+    padding-top: 125px;
+}
+
+.viasat content {
+    width: 65%;
+    float: right;
+    padding-left: 10%;
+}
+
+.sts {
+    clear: both;
+}
+
+.sts img {
+    width: 25%;
+    height: auto;
+    float: left;
+    padding-top: 125px;
+}
+
+.sts content {
+    width: 65%;
+    float: right;
+    padding-left: 10%;
+}
+
+
+@media only screen and (max-width: 600px) {
+    .viasat {
+        clear: both;
+    }
+
+    .viasat img {
+        width: 25%;
+        height: auto;
+        padding-top: 125px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .viasat content {
+    	width: 65%;
+        padding-left: 10%;
+    }
+
+    .sts {
+        clear: both;
+    }
+
+    .sts img {
+        width: 25%;
+        padding-top: 125px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .sts content {
+        width: 65%;
+        padding-left: 10%;
+    }
+}
+*/
+
+.projects {
+    clear: both;
+    width: 80%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.contact {
+    clear: both;
+    width: 80%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.contact-pics {
+    width: 25%;
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.contact img {
+    width: 100%;
+}
