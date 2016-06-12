@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Kyle Baker</title>
+    <meta charset="utf-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css" type="text/css" />
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <link rel="shortcut icon" href="images/kcb.png">
+
+</head>
+
+<body class="body" data-spy="scroll" data-target=".navbar" data-offset="50">
+
+    <div class="mainContent">
+
+        <div class="content">   
+            <div class="divider" id="2"></div>
+                <article class="about">    
+                    <header>
+                        <hh2>Haplotype Phasing: Minimum Parsimony Formulation</hh2>
+                    </header>
+                    <br> <br>
+                    <header>
+                        <hh2>About</hh2>
+                    </header>
+                    <div class="line-separator"></div>
+                    <div></div>
+                    <img src="images/kayak.png">
+                    <content>
+                        <p>
+                            Hello! My name is Kyle Baker and I am currently a Computer Science student at UCLA and
+                            I'm from San Diego, California. This is my project website for Computer Science CM124 at UCLA.
+                            The project I chose was Haplotype Phasing: Minimum Parsimony Formulation, which will be explained
+                            in further detail below.
+                        </p>
+                    </content>
+                    
+                </article>
+
+                <div class="divider" id="4"></div>
+                <article class="projects"> 
+                    <header>
+                        <hh2>Problem</hh2>
+                    </header>
+                    <div class="line-separator"></div>
+                    <content class="cs111">
+                        <h3>Haplotype Phasing</h3>
+                        <ul>
+                            <li>Genome sequence has been getting cheaper and cheaper</li>
+                            <li>Usually the data comes in genotypes, sometimes we want haplotype data</li>
+                            <li>We need a way to infer haplotype data from genotype data</li>
+                        </ul>
+                    </content>
+
+                    <content class="database">
+                        <h3>The Idea</h3>
+                        <ul>
+                            <li>Genotype data representation:
+                                <ul>
+                                    <li>0 = Homozygous Reference</li>
+                                    <li>1 = Heterozygous</li>
+                                    <li>2 = Homozygous Alternate</li>
+                                </ul>
+                            <li>In the absence of heterozygous data, haplotype phasing is easy</li>
+                            <img src="h1.png">
+                            <li>Things, however, get a little more ambiguous with heterozygous data</li>
+                            <img src="h2.png">
+                            <li>Choose the minimal set of haplotypes that can describe given set of genotypes</li>
+                        </ul>
+                    </content>
+                </article>
+
+                <div class="divider" id="5"></div>
+                <article class="projects"> 
+                    <header>
+                        <hh2>Algorithms</hh2>
+                    </header>
+                    <div class="line-separator"></div>
+
+                    <content>
+                        <h3>Exhaustive</h3>
+                        Idea is to generate a hash table of all possible haplotypes. For each genotype, we cycle through all the potential haplotypes. If the haplotype can potentially explain the given genotype, we increase a the hashed count associated with that haplotype. In the end, we choose the haplotype with the highest count. The idea is to choose haplotypes that are used most often. <br>
+                        <img src="h3.png"> <br>
+                        The above shows the first round of counting with the example genotypes given earlier. After we choose a haplotype, we then cycle through the genotypes again. Everywhere the haplotype can explain the given genotype, we apply the haplotype and its pair. We then repeat this cycle. This time around, the counts for the haplotypes will be less because we already chose some pairings to apply to some genotypes.
+                    </content>
+
+                    <content>
+                        <h3>Optimal</h3>
+                            For the optimal algorithm, we want to be sure that the set we get is always the minimal set. To do this, we begin by choosing all the haplotypes pairs that are required to be in the set. We know a pair is required to be in the set if the genotype in question has all 0s and 2s (i.e. has no heterozygous data). After this, a list of all the potentially valid haplotypes is generated. For each of these haplotypes, "select" the haplotype. Then recursively call the function again with this pair selection. At the end of the recursion, you should now have a full haplotype pair list. Return this list, along with the conut of unique haplotypes in the pairing. From here, we can keep track of the best pairings we have seen so far. We choose the minimal pairing.
+                    </content>
+
+                    <content>
+                        <h3>Greedy</h3>
+                        The greedy approach builds off of the idea that you can probably construct most genotypes from the haplotypes you have already chosen. Like the optimal approach, we begin by selecting the haplotype pairings that need to be in our selected set. After that, we try to combine any two haplotypes in our set of already chosen haplotypes to make any unpaired genotype. If we cannot do that anymore, we "cross-select" haplotypes, which means we pick one haplotype already in our set, and one haplotype not yet in our set to make a genotype. Since we added a new haplotype, we loop back and try combining this new haplotype with all our other haplotypes. If we cannot combine chosen haplotypes and we cannot "cross-select" haplotypes, we then use a similar approach explained in "exhaustive" to select two new haplotypes. We continue this process until all pairs are filled.
+                    </content>
+                </article>
+
+                <div class="divider" id="5"></div>
+                <article class="projects"> 
+                    <header>
+                        <hh2>Performance</hh2>
+                    </header>
+                    <div class="line-separator"></div>
+
+                    <content>
+                        <h3>Memory</h3>
+                        For the exhaustive algorithm, memory usage is very high. This is because the list of all possible haplotypes we need to maintain is very large. If N is the number of SNPs, the list contains 2^N strings of length N. Additionally, for each string, we keep an integer as a counter. If we're using C where each character is one byte and each integer is four bytes, the amount of memory used, just for this list, is 2^N * N + 4 * 2^N bytes. If we use 10 SNPs, that's 14336 bytes, 30 SNPs is 36507222016 bytes (36.507 GB), and 50 SNPs is 60.8 Petabytes. This algorithm is far too memory-inefficient.
+                        <br><br>
+                        The optimal algorithm cuts down on this table by pruning many haplotypes. It does this first by selecting all the haplotypes that need to be there. Additionally, the algorithm only adds haplotypes as they appear, thereby adding only valid ones, instead of all 2^N haplotypes. The worst case memory usage is the same as the exhaustive algorithm, but the list being maintained ends up being much smaller usually. Since the optimal algorithm is recursion based, lots of memory is used up for the stack frames.
+                        <br><br>
+                        Like the optimal algorithm, the greedy algorithm's worst case memory usage rate is the same as the exhaustive algorithm. However, most of the time you can create genotypes from the given haplotypes, and you do not need to make a list of potential haplotypes, and you certianly do not maintain one at all times as you do with the exhaustive algorithm.
+                    </content>
+
+                    <content>
+                        <h3>Execution Time</h3>
+                            The greedy algorithm is much faster in all scenarios and can handle analyzing many more SNPs. Both the greedy algorithm and the optimal algorithm run faster if there are fewer haplotypes with heterozygous data. The graphs below show execution times of the algorithms. The "Heterozygous" graph ran the algorithm with a data set that did had a lot of heterozygous data, while the "Homozygous" graph shows execution times for the algorithms when run with a lot of homozygous data.
+                            <br>
+                            <img src="h4.png" width="40%" height="40%"> <img src="h5.png" width="40%" height="40%">
+                            <br>
+                            As you can see, the greedy algorithm is by far the fastest, with the optimal being slightly faster than the exhaustive. In the above graphs, the number of SNPs is being increased, along with the number of individuals.
+
+                    </content>
+                </article>
+
+                <div class="divider" id="5"></div>
+                <article class="projects"> 
+                    <header>
+                        <hh2>Conclusion</hh2>
+                    </header>
+                    <div class="line-separator"></div>
+
+                    Overall, all three of the algorithms were pretty acurate. The exhaustive algorithm sometimes yielded poor results, but for the most part they were on par with the optimal and greedy algorithms. The greedy algorithm and the optimal algorithm always had the same results, while the greedy algorithm ran much faster and was much more memory efficient. I believe that in all cases, the greedy algorithm would be best to use. Maybe if you want to be 100 percent sure of your results and you have a small number of very heterozygous SNPs, the optimal algorithm would be best, but the use cases for it are very small when compared to the greedy algorithm.
+                    <br><br>
+                    In the future, I could parallelize my code. Much of the generation of the potential haplotypes list could be divided between many threads, since the work is independent. This would be helpful when dealing with data with large SNPs. If I were to do this, however, I might want to not use Python. This is because with Python's global interpreter lock, multiple threads cannot execute at the same time, even on different CPUs, therefore decreasing the potential efficiency increase of parallelization. I could also incorperate some statistics and machine learning ideas into my code. I could analyze real data, and use that to train my program. When looking at genotype data, I could draw from data my program has already seen to make probabilistic decisions.
+                </article>
+
+                <div class="divider" id="6"></div>
+                <div class="contact">
+                    <header>
+                        <hh2>Contact</hh2>
+                    </header>
+                    <div class="line-separator"></div>
+        
+                    <content>
+                        <p>
+                            Contact me by email at kylebaker37@gmail.com.
+                        </p>
+                    </content>
+
+                </div>
+        </div>
+            
+    </div>
+
+</body>
+<script src="scripts.js"></script>
+</html>
